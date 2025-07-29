@@ -43,7 +43,7 @@ jobs:
       - name: Install kubectl CLI
         uses: azure/setup-kubectl@v4
         with:
-          version: '1.26.0'
+          version: 'v1.26.0'
 
       - name: Set up kubeconfig
         run: |
