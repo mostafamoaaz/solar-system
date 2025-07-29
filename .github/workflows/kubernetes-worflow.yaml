@@ -57,7 +57,7 @@ jobs:
           kubectl get nodes
 
       - name: Replace tokens in manifests
-        uses: cschlieden/replace-tokens@v1
+        uses: cschleiden/replace-tokens@v1
         with:
           tokenPrefix: '_{_'
           tokenSuffix: '_}_'
