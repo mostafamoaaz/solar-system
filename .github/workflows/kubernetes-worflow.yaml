@@ -61,7 +61,7 @@ jobs:
         with:
           tokenPrefix: '_{_'
           tokenSuffix: '_}_'
-          files: 'kubernetes/development/deployment.yaml'
+          files: 'kubernetes/development/*.yaml'
 
         env:
           NAMESPACE: ${{ vars.NAMESPACE }}
@@ -73,6 +73,8 @@ jobs:
 
       - name: Create MongoDB Secret
         run: |
+          kubectl get namespace ${{ vars.NAMESPACE }} || \
+          kubectl create namespace ${{ vars.NAMESPACE }}
           kubectl -n ${{ vars.NAMESPACE }} create secret generic mongo-db-creds \
           --from-literal=MONGO_URI="${MONGO_URI}" \
           --from-literal=MONGO_USERNAME="${MONGO_USERNAME}" \
